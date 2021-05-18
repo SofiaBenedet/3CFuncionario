@@ -4,6 +4,7 @@ import br.com.sistema.model.Cargo;
 import br.com.sistema.model.Funcionario;
 import br.com.sistema.repository.CargoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class CargoServiceImpl implements CargoService {
 
     @Override
     public List<Cargo> findAll() {
-        return cargoRepository.findAll();
+        return cargoRepository.findAll(Sort.by("nome"));
     }
 
     @Override
@@ -40,7 +41,7 @@ public class CargoServiceImpl implements CargoService {
                 error = "Cargo já existe.";
             }
         } else {//Cargo Existente
-            c = cargoRepository.findByNotAndNome(cargo.getId(), cargo.getNome());
+            c = cargoRepository.findByIdNotAndNome(cargo.getId(), cargo.getNome());
             if ( c != null){
                 error = " Já existe um cargo com esse nome.";
             }
@@ -62,7 +63,6 @@ public class CargoServiceImpl implements CargoService {
             return false;
         }
     }
-
 
     @Override
     public boolean deleteById(Long id) {
