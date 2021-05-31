@@ -1,13 +1,9 @@
 package br.com.sistema.model;
 
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity(name = "projeto")
 public class Projeto {
@@ -15,20 +11,19 @@ public class Projeto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    @Size(max = 60)
+    @Size(max=60)
     @NotNull
     private String nome;
 
-    @Size(max = 150)
+    @Size(max=150)
     @NotNull
     private String descricao;
 
-    @Size(max = 40)
+    @Size(max=40)
     @NotNull
     private String status;
 
-    @Size(max = 48)
+    @Size(max=40)
     @NotNull
     private String risco;
 
@@ -36,10 +31,14 @@ public class Projeto {
     private double orcamento;
 
     @NotNull
-    private Date dataIniciaal;
+    private Date dataInicial;
 
     @NotNull
     private Date dataFinal;
+
+    @OneToOne
+    @JoinColumn(name = "gerente_id", referencedColumnName = "id")
+    private Funcionario gerente;
 
     public Long getId() {
         return id;
@@ -89,12 +88,12 @@ public class Projeto {
         this.orcamento = orcamento;
     }
 
-    public Date getDataIniciaal() {
-        return dataIniciaal;
+    public Date getDataInicial() {
+        return dataInicial;
     }
 
-    public void setDataIniciaal(Date dataIniciaal) {
-        this.dataIniciaal = dataIniciaal;
+    public void setDataInicial(Date dataInicial) {
+        this.dataInicial = dataInicial;
     }
 
     public Date getDataFinal() {
@@ -103,6 +102,14 @@ public class Projeto {
 
     public void setDataFinal(Date dataFinal) {
         this.dataFinal = dataFinal;
+    }
+
+    public Funcionario getGerente() {
+        return gerente;
+    }
+
+    public void setGerente(Funcionario gerente) {
+        this.gerente = gerente;
     }
 
     @Override
@@ -114,9 +121,8 @@ public class Projeto {
                 ", status='" + status + '\'' +
                 ", risco='" + risco + '\'' +
                 ", orcamento=" + orcamento +
-                ", dataIniciaal=" + dataIniciaal +
+                ", dataInicial=" + dataInicial +
                 ", dataFinal=" + dataFinal +
                 '}';
     }
 }
-
