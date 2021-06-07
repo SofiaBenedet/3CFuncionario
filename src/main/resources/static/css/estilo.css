@@ -1,5 +1,6 @@
 :root {
     --width-cargo: 50%
+    --width-projeto: 90%
 }
 
 .container-principal{
@@ -25,6 +26,17 @@ li{
     list-style-type: none;
 }
 
+.container-header-projeto{
+    margin-top: 24px;
+    margin-bottom: 24px;
+    padding: 32px;
+    color: #df167b;
+    background-color: #fad1de;
+    border-radius: 15px;
+    text-align: center;
+    width:var(--width-projeto)
+}
+
 .container-header-cargo{
     margin-top: 24px;
     margin-bottom: 24px;
@@ -35,15 +47,15 @@ li{
     text-align: center;
     width:var(--width-cargo)
 }
-.container-header-funcionario{
-    margin-top: 24px;
-    margin-bottom: 24px;
-    padding: 32px;
-    color: #df167b;
-    background-color: #fad1de;
-    border-radius: 15px;
-    text-align: center;
-}
+.container-header-funcionarios{
+     margin-top: 24px;
+     margin-bottom: 24px;
+     padding: 32px;
+     color: #df167b;
+     background-color: #fad1de;
+     border-radius: 15px;
+     text-align: center;
+ }
 
 .container-funcionario{
     border: 1px solid #df167b;
@@ -74,6 +86,24 @@ li{
     margin-bottom: 8px;
 }
 
+.container-projeto-btn-novo{
+    width: var(--width-projeto);
+    text-align: right;
+    margin-bottom: 8px;
+
+}
+
+.container-header-funcionario{
+     margin-top: 24px;
+     margin-bottom: 24px;
+     padding: 32px;
+     color: #df167b;
+     background-color: #fad1de;
+     border-radius: 15px;
+     text-align: center;
+     width:60%;
+ }
+
 .container-form-funcionario{
     border: 1px solid #df167b;
     border-radius: 15px;
@@ -97,4 +127,8 @@ li{
     background: #fad1de;
     color: white;
     font-weight: bold;
+}
+
+.select-multiple{
+    height: 150px !important;
 }
